@@ -19,10 +19,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#172c25" />
-    <title>Muhammad Hamza Saleem &amp; Sara Kamal — Wedding Invitation</title>
+    <title>Sara Kamal &amp; Muhammad Hamza Saleem — Wedding Invitation</title>
     <!-- APPEARANCE: colours, fonts, spacing and mobile layout -->
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=Great+Vibes&display=swap");
       /* COLOURS: green background, gold accents and cream text */
       :root {
         --green: #172c25;
@@ -712,6 +712,13 @@
       .cover:not(.open) .seal-wrap { opacity:1; transform:none; }
       @media(min-width:700px) { .cover {inset:0;box-shadow:none;} .cover-header{top:20%;} .seal-wrap{margin-top:0;} }
       @media(prefers-reduced-motion:reduce) { .cover.open {visibility:hidden;} }
+
+      .hosts { font:500 clamp(23px,4vw,32px)/1.4 "Cormorant Garamond",Georgia,serif; color:#d7bf90; margin:12px 0 18px; }
+      .invitation-wording {font-size:clamp(19px,3vw,24px);line-height:1.6;margin:18px auto 30px;max-width:590px;}
+      #names {font-family:"Great Vibes","Cormorant Garamond",cursive;font-weight:400;font-size:clamp(44px,7.8vw,88px);line-height:1.32;max-width:1000px;margin-top:24px;margin-bottom:24px;padding:0 8px;}
+      #names span {font:italic 25px/1.3 "Cormorant Garamond",Georgia,serif;margin:6px 0;color:var(--gold);}
+      #date-couple {text-transform:none;font-size:11px;letter-spacing:1.6px;}
+      @media(max-width:480px){.hero{padding:85px 22px;} .arabic{margin-bottom:28px;} #names{font-size:clamp(40px,10.5vw,52px);} .hero .intro:last-of-type{font-size:21px;line-height:1.4;}}
     </style>
   </head>
   <body>
@@ -809,12 +816,12 @@
           <div class="arabic" lang="ar" dir="rtl">
             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
           </div>
-          <div class="eyebrow">Together with their families</div>
-          <p class="intro">request the pleasure of your company</p>
-          <h1 id="names">Muhammad Hamza Saleem<span>&amp;</span>Sara Kamal</h1>
+          <div class="hosts">Mr. and Mrs. Kamal Sharif</div>
+          <p class="intro invitation-wording">request the pleasure of your company<br />at the wedding celebration of their beloved daughter</p>
+          <h1 id="names">Sara Kamal<span>with</span>Muhammad Hamza Saleem</h1>
           <div class="divider">✧</div>
           <div class="hero-date">A DAY TO REMEMBER</div>
-          <p class="intro">Join us as we begin our forever.</p>
+          <p class="intro">Join us as our children begin their forever.</p>
           <div class="scroll">
             <a href="#save-date">DISCOVER OUR DATE &nbsp; ↓</a>
           </div>
@@ -830,7 +837,7 @@
           </p>
           <div class="scratch-card" id="scratch-card">
             <div>
-              <p id="date-couple">THE WEDDING OF AYESHA &amp; AHMED</p>
+              <p id="date-couple">The wedding of Hamza and Sara</p>
               <h3 id="wedding-date">Date to be added</h3>
               <p id="date-location">Venue to be added</p>
             </div>
@@ -1017,14 +1024,14 @@
         (document.getElementById(id).textContent = text);
       // Names are set as text, so punctuation works without HTML escaping.
       const names = document.getElementById("names");
-      names.replaceChildren(document.createTextNode(SETTINGS.groom));
+      names.replaceChildren(document.createTextNode(SETTINGS.bride));
       const amp = document.createElement("span");
-      amp.textContent = "&";
-      names.append(amp, document.createTextNode(SETTINGS.bride));
+      amp.textContent = "with";
+      names.append(amp, document.createTextNode(SETTINGS.groom));
       openButton.textContent = "H & S";
       setText(
         "date-couple",
-        "THE WEDDING OF " + SETTINGS.groom + " & " + SETTINGS.bride,
+        "The wedding of Hamza and Sara",
       );
       document.querySelector(".closing p:nth-of-type(2)").textContent =
         "Hamza & Sara";
