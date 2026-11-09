@@ -317,7 +317,7 @@
       }
       .event h3 {
         font:
-          36px "Cormorant Garamond",
+          clamp(48px, 8vw, 64px) "Cormorant Garamond",
           Georgia,
           serif;
         margin: 10px;
@@ -655,6 +655,63 @@
         letter-spacing: 1px;
         cursor: pointer;
       }
+
+      /* Motion enhancements */
+      .cover { perspective: 1400px; transition: opacity .8s 1.65s, visibility 0s 2.45s; }
+      .flap { z-index: 2; backface-visibility: hidden; transition: transform 1.25s .3s cubic-bezier(.4,0,.2,1); }
+      .open .flap { transform: rotateX(165deg); }
+      .seal-wrap, .cover-header, .cover-footer { z-index: 3; }
+      .open .seal { transform: translateY(30px) rotate(-12deg) scale(.82); }
+      .open .tap, .open .cover-header, .open .cover-footer { opacity: 0; transition: opacity .35s; }
+      .envelope-letter { position:absolute; inset:15% 8% 7%; background:#f2ede1; border:8px solid #e2d5ba; box-shadow:0 12px 45px #0005; display:grid; place-content:center; text-align:center; color:#80683e; font:italic 35px 'Cormorant Garamond',Georgia,serif; transform:translateY(60%); transition:transform 1.2s .8s cubic-bezier(.2,.7,.2,1); }
+      .envelope-letter small { display:block; font:10px Inter,sans-serif; letter-spacing:4px; margin-top:18px; }
+      .open .envelope-letter { transform:translateY(-12%); }
+      .hero-inner > * { opacity:1; }
+      .motion-ready .hero-inner > * { opacity:0; transform:translateY(22px); transition:opacity .9s ease,transform .9s ease; }
+      .motion-ready.invitation-open .hero-inner > * { opacity:1; transform:translateY(0); transition-delay:calc(2s + var(--order,0) * .16s); }
+      .motion-ready .reveal { opacity:0; transform:translateY(25px); transition:opacity .85s ease,transform .85s ease; }
+      .motion-ready .reveal.visible { opacity:1; transform:translateY(0); }
+      .hero .botanical { transform-origin:center bottom; animation:botanical-sway 12s ease-in-out infinite alternate; }
+      @keyframes botanical-sway { from {transform:rotate(-1deg) scale(1.02)} to {transform:rotate(1deg) scale(1.02)} }
+      .gold-motes { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+      .gold-motes i { position:absolute; bottom:-20px; left:var(--x); width:3px; height:3px; border-radius:50%; background:#d7b579; box-shadow:0 0 9px #d7b57977; opacity:0; animation:mote-rise var(--duration) var(--delay) linear infinite; }
+      @keyframes mote-rise { 15%,70% {opacity:.35} to {transform:translate(25px,-100vh);opacity:0} }
+      .scratch-card canvas { transition:opacity .9s ease; }
+      .scratch-card.revealed canvas { opacity:0; pointer-events:none; }
+      .scratch-card.revealed:after { content:''; position:absolute; inset:-50%; pointer-events:none; background:linear-gradient(110deg,transparent 42%,#e3c78c55 50%,transparent 58%); transform:translateX(-80%); animation:date-shimmer 1.3s ease forwards; }
+      @keyframes date-shimmer { to {transform:translateX(80%)} }
+      .schedule li { position:relative; }
+      .schedule time { position:relative; }
+      .schedule time:after { content:''; position:absolute; right:-4px; top:8px; width:7px; height:7px; border-radius:50%; background:#aa8b53; box-shadow:0 0 0 4px #fcfaf5; }
+      .scroll a { display:inline-block; animation:scroll-hint 2.5s ease-in-out infinite; }
+      @keyframes scroll-hint { 50% {transform:translateY(5px)} }
+      @media (prefers-reduced-motion:reduce) {
+        *, *:before, *:after {animation:none!important;transition:none!important;}
+        .motion-ready .hero-inner > *, .motion-ready .reveal {opacity:1;transform:none;}
+      }
+
+      /* Gatefold opening: closed panels conceal the invitation completely. */
+      .cover { background:transparent; perspective:none; transition:visibility 0s 2.45s; }
+      .cover.open { opacity:1; }
+      .cover:before, .cover:after { content:''; position:absolute; top:0; bottom:0; width:50.15%; z-index:0; background:radial-gradient(ellipse at 100% 45%,#304839,#192e25 65%,#12241d); transition:transform 1.65s .45s cubic-bezier(.65,0,.25,1); }
+      .cover:before { left:0; border-right:1px solid #c6a46a66; box-shadow:inset -15px 0 35px #0002; }
+      .cover:after { right:0; background:radial-gradient(ellipse at 0% 45%,#304839,#192e25 65%,#12241d); border-left:1px solid #c6a46a33; box-shadow:inset 15px 0 35px #0002; }
+      .cover.open:before { transform:translateX(-102%); }
+      .cover.open:after { transform:translateX(102%); }
+      .cover .envelope, .cover .flap, .cover .envelope-letter { display:none; }
+      .cover .botanical { z-index:1; opacity:.18; transition:opacity .4s; }
+      .cover .grain { z-index:1; transition:opacity .4s; }
+      .cover-header { top:19%; z-index:3; letter-spacing:4px; font-size:10px; }
+      .seal-wrap { margin-top:0; z-index:3; }
+      .seal-wrap:before { content:''; position:absolute; width:190px; height:190px; left:50%; top:66px; transform:translate(-50%,-50%) rotate(45deg); border:1px solid #c6a46a44; pointer-events:none; }
+      .seal { width:132px; height:132px; font-size:35px; border-radius:50%; box-shadow:0 7px 25px #0005,inset 0 0 0 4px #d6b269,inset 0 0 0 7px #8b642b; }
+      .tap { margin-top:56px; font-size:9px; letter-spacing:3px; }
+      .cover-footer { bottom:16%; padding:0 25px; font-size:21px; z-index:3; text-align:center; }
+      .open .seal-wrap { opacity:0; transform:scale(.92); transition:opacity .4s,transform .5s; }
+      .open .botanical, .open .grain { opacity:0; }
+      .cover:not(.open) .seal-wrap { opacity:1; transform:none; }
+      @media(min-width:700px) { .cover {inset:0;box-shadow:none;} .cover-header{top:20%;} .seal-wrap{margin-top:0;} }
+      @media(prefers-reduced-motion:reduce) { .cover.open {visibility:hidden;} }
     </style>
   </head>
   <body>
@@ -696,7 +753,7 @@
     </svg>
     <!-- OPENING ENVELOPE AND GOLD SEAL -->
     <section class="cover" id="cover" aria-label="Sealed wedding invitation">
-      <div class="envelope"></div>
+      <div class="envelope"></div><div class="envelope-letter" aria-hidden="true">H &amp; S<small>THE WEDDING INVITATION</small></div>
       <svg
         class="botanical"
         preserveAspectRatio="xMidYMid slice"
@@ -722,7 +779,7 @@
         >
           A<small>&amp;</small>A
         </button>
-        <p class="tap">TAP THE SEAL TO OPEN</p>
+        <p class="tap">TAP TO OPEN YOUR INVITATION</p>
       </div>
       <div class="cover-footer">Some moments are meant to be shared.</div>
     </section>
@@ -732,7 +789,7 @@
         id="replay"
         aria-label="Close invitation and replay opening"
       >
-        ↺ &nbsp; THE ENVELOPE
+        ↺ &nbsp; THE INVITATION
       </button>
     </div>
     <main id="invitation" inert>
@@ -759,28 +816,10 @@
           <div class="hero-date">A DAY TO REMEMBER</div>
           <p class="intro">Join us as we begin our forever.</p>
           <div class="scroll">
-            <a href="#celebration">THE CELEBRATION &nbsp; ↓</a>
+            <a href="#save-date">DISCOVER OUR DATE &nbsp; ↓</a>
           </div>
         </div>
       </section>
-      <!-- EVENT CARDS: edit the Barat details inside this section -->
-      <section class="paper" id="celebration">
-        <div class="eyebrow">With full hearts</div>
-        <h2>You're invited.</h2>
-        <p class="note">
-          We would be delighted to have you with us as we celebrate our wedding,
-          surrounded by the people we love.
-        </p>
-        <div class="events">
-          <article class="event">
-            <div class="eyebrow">01 / The wedding</div>
-            <h3>Barat</h3>
-            <p class="time">18 DECEMBER 2026 · 7:00 PM</p>
-            <p class="venue">Veranda Noir</p>
-          </article>
-        </div>
-      </section>
-
       <!-- SCRATCH DATE CARD AND COUNTDOWN: details come from SETTINGS -->
       <section class="details" id="save-date">
         <div class="detail-wrap">
@@ -805,7 +844,7 @@
           <p class="calendar-note" id="calendar-note">
             Calendar download becomes available when you set the wedding date.
           </p>
-          <div class="countdown">
+          <div class="countdown" id="countdown" hidden>
             <h2>Counting the moments</h2>
             <div class="digits" aria-label="Wedding countdown">
               <div class="digit">
@@ -827,30 +866,40 @@
           </div>
         </div>
       </section>
+      <!-- EVENT CARDS: edit the Barat details inside this section -->
+      <section class="paper" id="celebration">
+        <div class="eyebrow">With full hearts</div>
+        <h2>You're invited.</h2>
+        <p class="note">
+          We would be delighted to have you with us as we celebrate our wedding,
+          surrounded by the people we love.
+        </p>
+        <div class="events">
+          <article class="event">
+            <h3>Barat</h3>
+            <p class="time" id="event-date-time">18 DECEMBER 2026 · 7:00 PM</p>
+            <p class="venue" id="event-venue">Veranda Noir</p>
+          </article>
+        </div>
+      </section>
+
       <!-- EVENING SCHEDULE AND VENUE: details come from SETTINGS -->
       <section class="details evening" id="evening">
         <div class="detail-wrap">
           <div class="eyebrow">A celebration to cherish</div>
           <h2>The Evening</h2>
-          <p class="calendar-note">18 December 2026</p>
+          <p class="calendar-note" id="evening-date">18 December 2026</p>
           <ol class="schedule" id="schedule"></ol>
           <div class="eyebrow">We look forward to seeing you</div>
           <h2>Location</h2>
           <div class="location-card">
-            <svg
-              class="location-art"
-              viewBox="0 0 240 140"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.2"
-              aria-hidden="true"
-            >
-              <path
-                d="M12 125h216M25 125V62h45v63M170 125V62h45v63M70 125V44h100v81M97 125V87a23 23 0 0 1 46 0v38M79 44h82M88 44Q120 0 152 44M120 14V4M25 62l22-22 23 22M170 62l22-22 23 22M47 40V27M192 40V27M34 83h12v21H34zM51 83h12v21H51zM179 83h12v21h-12zM196 83h12v21h-12zM81 60h12v17H81zM147 60h12v17h-12zM111 125v-22a9 9 0 0 1 18 0v22M100 135h40M105 130h30"
-              />
-              <path
-                d="M7 125v-16m0 9Q-1 110 3 103q10 3 4 15m0-6q9-12 12-5-2 7-12 5M232 125v-16m0 9q-8-8-4-15 10 3 4 15m0-6q9-12 12-5-2 7-12 5"
-              />
+            <svg class="location-art" viewBox="0 0 240 140" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <ellipse cx="120" cy="120" rx="32" ry="5" opacity=".35" />
+              <path d="M120 109C110 96 87 75 87 52a33 33 0 0 1 66 0c0 23-23 44-33 57Z" />
+              <circle cx="120" cy="52" r="12" />
+              <path d="M81 112C55 94 49 65 59 38M64 92Q39 91 41 72Q60 72 64 92ZM57 72Q36 63 44 48Q61 54 57 72ZM57 53Q47 36 61 24Q72 40 57 53ZM76 106Q74 85 89 80Q96 98 76 106Z" opacity=".7" />
+              <path d="M159 112C185 94 191 65 181 38M176 92Q201 91 199 72Q180 72 176 92ZM183 72Q204 63 196 48Q179 54 183 72ZM183 53Q193 36 179 24Q168 40 183 53ZM164 106Q166 85 151 80Q144 98 164 106Z" opacity=".7" />
+              <path d="M120 3v7M116.5 6.5h7M76 27v5M73.5 29.5h5M164 27v5M161.5 29.5h5" opacity=".65" />
             </svg>
             <div class="eyebrow" style="font-size: 8px">
               Wedding celebration
@@ -875,7 +924,7 @@
         <div class="eyebrow">Your presence is our joy</div>
         <p>Come for the celebration.<br />Stay for the memories.</p>
         <div class="divider">✧</div>
-        <p>Muhammad Hamza Saleem &amp; Sara Kamal</p>
+        <p>Hamza &amp; Sara</p>
       </footer>
     </main>
     <script>
@@ -941,6 +990,7 @@
       backgroundMusic.addEventListener("pause", syncMusicButton);
 
       function openInvitation() {
+        document.body.classList.add("invitation-open");
         // Start only after the guest taps; replay preserves their music choice.
         if (!musicStarted) playBackgroundMusic();
         cover.classList.add("open");
@@ -949,12 +999,13 @@
         setTimeout(
           () =>
             document.getElementById("replay").focus({ preventScroll: true }),
-          1800,
+          2450,
         );
       }
       openButton.addEventListener("click", openInvitation);
       document.getElementById("replay").addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "instant" });
+        document.body.classList.remove("invitation-open");
         cover.classList.remove("open");
         invitation.inert = true;
         document.body.style.overflow = "hidden";
@@ -976,8 +1027,9 @@
         "THE WEDDING OF " + SETTINGS.groom + " & " + SETTINGS.bride,
       );
       document.querySelector(".closing p:nth-of-type(2)").textContent =
-        SETTINGS.groom + " & " + SETTINGS.bride;
+        "Hamza & Sara";
       setText("location-name", SETTINGS.venue);
+      setText("event-venue", SETTINGS.venue);
       setText("location-address", SETTINGS.address || "");
       setText("date-location", SETTINGS.venue);
       if (SETTINGS.venue || SETTINGS.address) {
@@ -1013,8 +1065,9 @@
             timeZone: "Asia/Karachi",
           }),
         );
-        document.querySelector(".hero-date").textContent =
-          document.getElementById("wedding-date").textContent;
+        document.querySelector(".hero-date").textContent = "A DAY TO REMEMBER";
+        setText("evening-date", document.getElementById("wedding-date").textContent);
+        setText("event-date-time", wedding.toLocaleString("en-GB", {day:"numeric",month:"long",year:"numeric",hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Karachi"}).toUpperCase());
         document.getElementById("calendar").disabled = false;
         setText(
           "calendar-note",
@@ -1040,8 +1093,7 @@
             : "The wedding date has arrived.",
         );
       }
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+      let countdownTimer = null;
       function icsEscape(text) {
         return text
           .replace(/\\/g, "\\\\")
@@ -1121,8 +1173,18 @@
         scratches = 0;
       }
       function revealDate() {
+        if (revealed) return;
         revealed = true;
-        canvas.hidden = true;
+        if (validDate) document.querySelector(".hero-date").textContent = document.getElementById("wedding-date").textContent;
+        card.classList.add("revealed");
+        setTimeout(() => {
+          canvas.hidden = true;
+          const countdown = document.getElementById("countdown");
+          countdown.hidden = false;
+          updateCountdown();
+          if (validDate && countdownTimer === null) countdownTimer = setInterval(updateCountdown, 1000);
+          requestAnimationFrame(() => requestAnimationFrame(() => countdown.classList.add("visible")));
+        }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 950);
         document.getElementById("reveal-date").hidden = true;
       }
       function scratch(e) {
@@ -1161,6 +1223,18 @@
         .getElementById("reveal-date")
         .addEventListener("click", revealDate);
       new ResizeObserver(paintScratch).observe(card);
+      // Keep content visible if motion APIs are unavailable.
+      if ("IntersectionObserver" in window) {
+        document.body.classList.add("motion-ready");
+        document.querySelectorAll(".hero-inner > *").forEach((el,i) => el.style.setProperty("--order",i));
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => { if(entry.isIntersecting) {entry.target.classList.add("visible"); observer.unobserve(entry.target);} });
+        }, {threshold:.12});
+        document.querySelectorAll(".paper > .eyebrow, .paper > h2, .paper > .note, .event, .details h2, .scratch-card, .countdown, .schedule li, .closing > *").forEach(el => { el.classList.add("reveal"); observer.observe(el); });
+      }
+      const motes=document.createElement("div"); motes.className="gold-motes"; motes.setAttribute("aria-hidden","true");
+      for(let i=0;i<12;i++) { const dot=document.createElement("i"); dot.style.setProperty("--x",(i*8.3)+"%"); dot.style.setProperty("--duration",(15+i%5*3)+"s"); dot.style.setProperty("--delay",(-i*2.7)+"s"); motes.append(dot); }
+      document.querySelector(".hero").prepend(motes);
     </script>
   </body>
 </html>
