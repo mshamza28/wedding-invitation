@@ -1,0 +1,1167 @@
+<!doctype html>
+<!--
+  YOUR WEDDING INVITATION — EDITING GUIDE
+
+  1. Search for: const SETTINGS
+     Edit the couple's names, wedding date, venue, address and evening schedule.
+
+  2. Search for: EVENT CARDS
+     Edit the Barat card and its details.
+
+  3. Search for: COLOURS
+     Change the colour codes in the CSS below.
+
+  Save with Ctrl + S, then refresh your browser to see the result.
+  Keep quotation marks, commas and HTML tags in place.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#172c25" />
+    <title>Muhammad Hamza Saleem &amp; Sara Kamal — Wedding Invitation</title>
+    <!-- APPEARANCE: colours, fonts, spacing and mobile layout -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap");
+      /* COLOURS: green background, gold accents and cream text */
+      :root {
+        --green: #172c25;
+        --gold: #c6a46a;
+        --cream: #f2ede1;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #10221c;
+        color: var(--cream);
+        font-family: Inter, sans-serif;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid #e8ce98;
+        outline-offset: 6px;
+      }
+      .cover {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        background: #172c25;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        transition:
+          opacity 1s 0.8s,
+          visibility 0s 1.8s;
+      }
+      .cover.open {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.16;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23ffffff' filter='url(%23n)' opacity='.5' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+      }
+      .botanical {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        color: #75816b;
+        opacity: 0.32;
+      }
+      .envelope {
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 150px #030b08;
+      }
+      .flap {
+        position: absolute;
+        inset: 0 0 34%;
+        background: linear-gradient(145deg, #273d31, #172a22);
+        clip-path: polygon(0 0, 100% 0, 100% 46%, 50% 100%, 0 46%);
+        filter: drop-shadow(0 8px 5px #000);
+        transform-origin: top;
+        transition: transform 1.4s ease;
+        box-shadow: inset 0 0 120px #0005;
+      }
+      .open .flap {
+        transform: translateY(-70%) rotateX(85deg);
+      }
+      .cover-header {
+        position: absolute;
+        top: 8%;
+        text-align: center;
+        letter-spacing: 5px;
+        font-size: 10px;
+        line-height: 2.5;
+        color: #d2bd91;
+      }
+      .seal-wrap {
+        position: relative;
+        text-align: center;
+        margin-top: 12vh;
+      }
+      .seal {
+        width: 132px;
+        height: 132px;
+        border-radius: 48% 52% 47% 53%;
+        border: 4px solid #ab803a;
+        background: radial-gradient(
+          circle at 35% 25%,
+          #ecd095,
+          #bb8d41 50%,
+          #93631f 80%
+        );
+        box-shadow:
+          0 8px 18px #0009,
+          inset 0 0 0 5px #d6b269,
+          inset 0 0 0 8px #8b642b,
+          inset 0 0 20px #fff5;
+        cursor: pointer;
+        color: #644717;
+        transition:
+          transform 0.5s,
+          opacity 0.6s;
+        font:
+          italic 42px "Cormorant Garamond",
+          Georgia,
+          serif;
+        text-shadow: 0 1px #f8deab;
+      }
+      .seal:hover {
+        transform: scale(1.05);
+      }
+      .seal small {
+        font-size: 22px;
+      }
+      .open .seal {
+        transform: translateY(60px) scale(0.7);
+        opacity: 0;
+      }
+      .tap {
+        margin-top: 34px;
+        font-size: 9px;
+        letter-spacing: 3px;
+        color: #e1d0aa;
+      }
+      .cover-footer {
+        position: absolute;
+        bottom: 5%;
+        font:
+          italic 20px "Cormorant Garamond",
+          Georgia,
+          serif;
+        color: #b8baa8;
+      }
+      .toolbar {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 5;
+      }
+      .replay {
+        border: 1px solid #c6a46a66;
+        color: #d8c59f;
+        border-radius: 30px;
+        background: #14271fe6;
+        padding: 12px 18px;
+        font:
+          10px Inter,
+          sans-serif;
+        letter-spacing: 1px;
+        cursor: pointer;
+      }
+      main {
+        overflow: hidden;
+      }
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        padding: 100px 24px;
+        background: radial-gradient(ellipse at center, #2e4837 0, #172c25 65%);
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 26px;
+        border: 1px solid #baa47555;
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        line-height: 2;
+      }
+      .arabic {
+        font-family: Georgia, serif;
+        font-size: 26px;
+        color: #d7bf90;
+        margin-bottom: 44px;
+      }
+      .intro {
+        font:
+          italic 24px "Cormorant Garamond",
+          Georgia,
+          serif;
+        color: #d2d0bc;
+        margin: 24px 0;
+      }
+      h1 {
+        font:
+          400 clamp(64px, 11vw, 126px)/0.92 "Cormorant Garamond",
+          Georgia,
+          serif;
+        margin: 26px 0;
+        color: #f0e8d6;
+      }
+      h1 span {
+        display: block;
+        font:
+          italic 40px "Cormorant Garamond",
+          Georgia,
+          serif;
+        color: var(--gold);
+        margin: 12px;
+      }
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        justify-content: center;
+        color: var(--gold);
+        margin: 32px auto;
+      }
+      .divider:before,
+      .divider:after {
+        content: "";
+        width: 55px;
+        height: 1px;
+        background: #c6a46a66;
+      }
+      .hero-date {
+        font:
+          22px "Cormorant Garamond",
+          Georgia,
+          serif;
+        letter-spacing: 3px;
+      }
+      .scroll {
+        margin-top: 44px;
+        font-size: 9px;
+        letter-spacing: 3px;
+        color: #b9c1ae;
+      }
+      .scroll a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .paper {
+        background: var(--cream);
+        color: #283b2e;
+        text-align: center;
+        padding: 90px 24px;
+        position: relative;
+      }
+      .paper .eyebrow {
+        color: #866b3e;
+      }
+      h2 {
+        font:
+          400 clamp(42px, 7vw, 66px) "Cormorant Garamond",
+          Georgia,
+          serif;
+        margin: 14px 0 25px;
+      }
+      .note {
+        font:
+          22px/1.65 "Cormorant Garamond",
+          Georgia,
+          serif;
+        max-width: 490px;
+        margin: 0 auto;
+        color: #596253;
+      }
+      .events {
+        max-width: 850px;
+        margin: 55px auto 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid #b7ac94;
+        border-bottom: 1px solid #b7ac94;
+      }
+      .event {
+        padding: 35px 24px;
+      }
+      .event + .event {
+        border-left: 1px solid #b7ac94;
+      }
+      .event h3 {
+        font:
+          36px "Cormorant Garamond",
+          Georgia,
+          serif;
+        margin: 10px;
+      }
+      .event p {
+        font-size: 12px;
+        line-height: 2;
+        color: #626858;
+      }
+      .event .time {
+        letter-spacing: 2px;
+        color: #7a6036;
+        font-size: 10px;
+      }
+      .venue {
+        font:
+          italic 24px "Cormorant Garamond",
+          Georgia,
+          serif !important;
+        margin: 20px 0 0;
+      }
+      .closing {
+        padding: 85px 24px;
+        text-align: center;
+        background: #172c25;
+      }
+      .closing p {
+        font:
+          italic 28px/1.5 "Cormorant Garamond",
+          Georgia,
+          serif;
+        max-width: 460px;
+        margin: 20px auto;
+        color: #ddd8c3;
+      }
+      .closing small {
+        display: block;
+        color: #a7ad98;
+        font-size: 10px;
+        line-height: 1.8;
+        max-width: 360px;
+        margin: 38px auto 0;
+      }
+      .demo {
+        display: inline-block;
+        border: 1px solid #c6a46a55;
+        border-radius: 24px;
+        font-size: 9px;
+        letter-spacing: 2px;
+        padding: 8px 14px;
+        color: #cdb889;
+        margin-top: 25px;
+      }
+      @media (min-width: 700px) {
+        .cover {
+          inset: 0 calc((100% - 560px) / 2);
+          box-shadow: 0 0 0 100vw #0c1915;
+        }
+        .seal-wrap {
+          margin-top: 17vh;
+        }
+        .cover-header {
+          top: 10%;
+        }
+      }
+      @media (max-width: 580px) {
+        .events {
+          grid-template-columns: 1fr;
+        }
+        .event + .event {
+          border-left: 0;
+          border-top: 1px solid #b7ac94;
+        }
+        .toolbar {
+          top: 12px;
+          right: 12px;
+        }
+        .replay {
+          padding: 10px 13px;
+        }
+        .hero:after {
+          inset: 14px;
+        }
+        .paper {
+          padding: 65px 24px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+      .details {
+        background: #fcfaf5;
+        color: #303c31;
+        text-align: center;
+        padding: 80px 24px;
+      }
+      .details h2 {
+        font-style: italic;
+      }
+      .detail-wrap {
+        max-width: 780px;
+        margin: auto;
+      }
+      .scratch-card {
+        position: relative;
+        max-width: 510px;
+        min-height: 280px;
+        margin: 36px auto 20px;
+        border: 1px solid #ded8ca;
+        border-radius: 22px;
+        background: #fffdf8;
+        box-shadow: 0 18px 35px -27px #273b2c88;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        padding: 42px 20px;
+      }
+      .scratch-card h3 {
+        font:
+          400 clamp(28px, 5vw, 44px) "Cormorant Garamond",
+          Georgia,
+          serif;
+        margin: 15px 0;
+      }
+      .scratch-card p {
+        font-size: 10px;
+        letter-spacing: 2px;
+        line-height: 2;
+        color: #7d795f;
+      }
+      .scratch-card canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        cursor: crosshair;
+      }
+      .outline-button {
+        display: inline-block;
+        padding: 14px 24px;
+        background: transparent;
+        border: 1px solid #baa174;
+        border-radius: 40px;
+        color: #7d653e;
+        font:
+          10px Inter,
+          sans-serif;
+        letter-spacing: 2px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .outline-button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .reveal-button {
+        display: block;
+        margin: 12px auto 25px;
+        border: 0;
+        background: none;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        color: #7f785f;
+        font:
+          11px Inter,
+          sans-serif;
+        cursor: pointer;
+      }
+      .calendar-note {
+        font-size: 11px;
+        color: #777b6b;
+        line-height: 1.6;
+      }
+      .countdown {
+        margin: 64px auto 0;
+      }
+      .digits {
+        display: flex;
+        justify-content: center;
+        margin: 28px auto;
+        max-width: 440px;
+      }
+      .digit {
+        flex: 1;
+        border-right: 1px solid #b9b29e;
+        padding: 3px 12px;
+      }
+      .digit:last-child {
+        border: 0;
+      }
+      .digit strong {
+        display: block;
+        font:
+          36px "Cormorant Garamond",
+          Georgia,
+          serif;
+        font-variant-numeric: tabular-nums;
+      }
+      .digit span {
+        display: block;
+        font-size: 8px;
+        letter-spacing: 2px;
+        margin-top: 8px;
+        color: #7c806e;
+      }
+      .count-status {
+        font:
+          italic 18px "Cormorant Garamond",
+          Georgia,
+          serif;
+        color: #797f6b;
+      }
+      .evening {
+        padding-top: 0;
+      }
+      .schedule {
+        max-width: 410px;
+        margin: 30px auto 75px;
+        text-align: left;
+        list-style: none;
+        padding: 0;
+      }
+      .schedule li {
+        display: grid;
+        grid-template-columns: 105px 1fr;
+        gap: 20px;
+        padding: 16px 0;
+        font:
+          18px "Cormorant Garamond",
+          Georgia,
+          serif;
+      }
+      .schedule time {
+        text-align: right;
+        border-right: 1px solid #b4a784;
+        padding-right: 20px;
+        color: #776344;
+      }
+      .location-card {
+        max-width: 470px;
+        margin: 30px auto 0;
+        border: 1px solid #ded8ca;
+        border-radius: 24px;
+        padding: 38px 24px;
+        background: #fffdf9;
+        box-shadow: 0 15px 35px -28px #273b2c88;
+      }
+      .location-art {
+        width: 220px;
+        height: 130px;
+        color: #aa8b53;
+        margin: 0 auto 18px;
+        display: block;
+      }
+      .location-card h3 {
+        font:
+          32px "Cormorant Garamond",
+          Georgia,
+          serif;
+        margin: 20px 0 12px;
+      }
+      .location-card p {
+        font-size: 12px;
+        line-height: 1.8;
+        color: #7a7d6c;
+      }
+      .venue-placeholder {
+        font-size: 11px;
+        color: #827b66;
+      }
+      .details .eyebrow {
+        color: #8a7047;
+      }
+      @media (max-width: 480px) {
+        .details {
+          padding: 60px 22px;
+        }
+        .evening {
+          padding-top: 0;
+        }
+        .digit {
+          padding: 3px 8px;
+        }
+        .digit strong {
+          font-size: 30px;
+        }
+        .schedule li {
+          grid-template-columns: 90px 1fr;
+          gap: 16px;
+        }
+      }
+      /* Keep full names readable on phones and larger screens. */
+      h1 {
+        font-size: clamp(42px, 7vw, 90px);
+        line-height: 1.05;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-wrap: break-word;
+      }
+      .hero-inner {
+        width: 100%;
+      }
+      .events {
+        grid-template-columns: 1fr;
+      }
+      /* BACKGROUND MUSIC CONTROL */
+      .music-control {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 20;
+        max-width: calc(100vw - 40px);
+        padding: 12px 18px;
+        border: 1px solid #c6a46a;
+        border-radius: 28px;
+        background: #172c25;
+        color: #f2ede1;
+        font:
+          11px Inter,
+          sans-serif;
+        letter-spacing: 1px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MUSIC: put your own calm audio file named music.mp3 beside this HTML file. -->
+    <audio id="background-music" loop preload="none">
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+    <button
+      class="music-control"
+      id="music-toggle"
+      type="button"
+      aria-label="Play background music"
+    >
+      Play music
+    </button>
+    <span
+      id="music-status"
+      role="status"
+      style="
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+      "
+    ></span>
+
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <defs>
+        <g id="branch" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path
+            d="M40 660C170 450 80 250 250 20M110 500Q260 450 285 300M130 350Q30 250 45 140M165 200Q300 160 315 50"
+          />
+          <path
+            d="M91 540Q5 500 36 410Q110 440 91 540ZM112 471Q190 480 218 390Q145 380 112 471ZM122 393Q55 360 70 285Q140 310 122 393ZM132 323Q210 330 234 247Q166 242 132 323ZM165 214Q100 190 123 110Q186 147 165 214ZM201 135Q273 140 289 65Q222 62 201 135ZM249 24Q187 41 202 108Q253 90 249 24ZM207 414Q210 334 285 300Q293 381 207 414ZM68 243Q0 207 45 140Q93 187 68 243ZM255 141Q254 68 315 50Q331 117 255 141Z"
+          />
+        </g>
+      </defs>
+    </svg>
+    <!-- OPENING ENVELOPE AND GOLD SEAL -->
+    <section class="cover" id="cover" aria-label="Sealed wedding invitation">
+      <div class="envelope"></div>
+      <svg
+        class="botanical"
+        preserveAspectRatio="xMidYMid slice"
+        viewBox="0 0 420 900"
+        aria-hidden="true"
+      >
+        <use
+          href="#branch"
+          transform="translate(-35 190) rotate(-15 210 450)"
+        />
+        <use href="#branch" transform="translate(460 760) rotate(170)" />
+      </svg>
+      <div class="flap"></div>
+      <div class="grain"></div>
+      <div class="cover-header">
+        A WEDDING INVITATION<br />WITH LOVE, FOR YOU
+      </div>
+      <div class="seal-wrap">
+        <button
+          class="seal"
+          id="open"
+          aria-label="Break the seal and open invitation"
+        >
+          A<small>&amp;</small>A
+        </button>
+        <p class="tap">TAP THE SEAL TO OPEN</p>
+      </div>
+      <div class="cover-footer">Some moments are meant to be shared.</div>
+    </section>
+    <div class="toolbar">
+      <button
+        class="replay"
+        id="replay"
+        aria-label="Close invitation and replay opening"
+      >
+        ↺ &nbsp; THE ENVELOPE
+      </button>
+    </div>
+    <main id="invitation" inert>
+      <!-- MAIN INVITATION: wording and couple names -->
+      <section class="hero">
+        <svg
+          class="botanical"
+          preserveAspectRatio="xMidYMid slice"
+          viewBox="0 0 1000 1000"
+          aria-hidden="true"
+        >
+          <use href="#branch" transform="translate(-30 150)" />
+          <use href="#branch" transform="translate(1040 860) rotate(180)" />
+        </svg>
+        <div class="grain"></div>
+        <div class="hero-inner">
+          <div class="arabic" lang="ar" dir="rtl">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </div>
+          <div class="eyebrow">Together with their families</div>
+          <p class="intro">request the pleasure of your company</p>
+          <h1 id="names">Muhammad Hamza Saleem<span>&amp;</span>Sara Kamal</h1>
+          <div class="divider">✧</div>
+          <div class="hero-date">A DAY TO REMEMBER</div>
+          <p class="intro">Join us as we begin our forever.</p>
+          <div class="scroll">
+            <a href="#celebration">THE CELEBRATION &nbsp; ↓</a>
+          </div>
+        </div>
+      </section>
+      <!-- EVENT CARDS: edit the Barat details inside this section -->
+      <section class="paper" id="celebration">
+        <div class="eyebrow">With full hearts</div>
+        <h2>You're invited.</h2>
+        <p class="note">
+          We would be delighted to have you with us as we celebrate our wedding,
+          surrounded by the people we love.
+        </p>
+        <div class="events">
+          <article class="event">
+            <div class="eyebrow">01 / The wedding</div>
+            <h3>Barat</h3>
+            <p class="time">18 DECEMBER 2026 · 7:00 PM</p>
+            <p class="venue">Veranda Noir</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SCRATCH DATE CARD AND COUNTDOWN: details come from SETTINGS -->
+      <section class="details" id="save-date">
+        <div class="detail-wrap">
+          <div class="eyebrow">The beginning of forever</div>
+          <h2>Save the Date</h2>
+          <p class="eyebrow" style="font-size: 8px">
+            Scratch to reveal the date
+          </p>
+          <div class="scratch-card" id="scratch-card">
+            <div>
+              <p id="date-couple">THE WEDDING OF AYESHA &amp; AHMED</p>
+              <h3 id="wedding-date">Date to be added</h3>
+              <p id="date-location">Venue to be added</p>
+            </div>
+            <canvas id="scratch" aria-hidden="true"></canvas>
+          </div>
+          <button class="reveal-button" id="reveal-date">
+            Or tap here to reveal the date</button
+          ><button class="outline-button" id="calendar" disabled>
+            Add to calendar
+          </button>
+          <p class="calendar-note" id="calendar-note">
+            Calendar download becomes available when you set the wedding date.
+          </p>
+          <div class="countdown">
+            <h2>Counting the moments</h2>
+            <div class="digits" aria-label="Wedding countdown">
+              <div class="digit">
+                <strong id="days">00</strong><span>DAYS</span>
+              </div>
+              <div class="digit">
+                <strong id="hours">00</strong><span>HOURS</span>
+              </div>
+              <div class="digit">
+                <strong id="minutes">00</strong><span>MINUTES</span>
+              </div>
+              <div class="digit">
+                <strong id="seconds">00</strong><span>SECONDS</span>
+              </div>
+            </div>
+            <p class="count-status" id="count-status">
+              Set your wedding date to start the countdown.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- EVENING SCHEDULE AND VENUE: details come from SETTINGS -->
+      <section class="details evening" id="evening">
+        <div class="detail-wrap">
+          <div class="eyebrow">A celebration to cherish</div>
+          <h2>The Evening</h2>
+          <p class="calendar-note">18 December 2026</p>
+          <ol class="schedule" id="schedule"></ol>
+          <div class="eyebrow">We look forward to seeing you</div>
+          <h2>Location</h2>
+          <div class="location-card">
+            <svg
+              class="location-art"
+              viewBox="0 0 240 140"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 125h216M25 125V62h45v63M170 125V62h45v63M70 125V44h100v81M97 125V87a23 23 0 0 1 46 0v38M79 44h82M88 44Q120 0 152 44M120 14V4M25 62l22-22 23 22M170 62l22-22 23 22M47 40V27M192 40V27M34 83h12v21H34zM51 83h12v21H51zM179 83h12v21h-12zM196 83h12v21h-12zM81 60h12v17H81zM147 60h12v17h-12zM111 125v-22a9 9 0 0 1 18 0v22M100 135h40M105 130h30"
+              />
+              <path
+                d="M7 125v-16m0 9Q-1 110 3 103q10 3 4 15m0-6q9-12 12-5-2 7-12 5M232 125v-16m0 9q-8-8-4-15 10 3 4 15m0-6q9-12 12-5-2 7-12 5"
+              />
+            </svg>
+            <div class="eyebrow" style="font-size: 8px">
+              Wedding celebration
+            </div>
+            <h3 id="location-name">Veranda Noir</h3>
+            <p id="location-address">Add your venue address in the settings.</p>
+            <a
+              class="outline-button"
+              id="map-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              hidden
+              >View location ↗</a
+            >
+            <p id="map-note" class="venue-placeholder">
+              The map button will appear when you add the address.
+            </p>
+          </div>
+        </div>
+      </section>
+      <footer class="closing">
+        <div class="eyebrow">Your presence is our joy</div>
+        <p>Come for the celebration.<br />Stay for the memories.</p>
+        <div class="divider">✧</div>
+        <p>Muhammad Hamza Saleem &amp; Sara Kamal</p>
+      </footer>
+    </main>
+    <script>
+      // EDIT YOUR INVITATION HERE. Use double quotes around text.
+      const SETTINGS = {
+        bride: "Sara Kamal",
+        groom: "Muhammad Hamza Saleem",
+        // Example format: "2027-02-14T19:00:00+05:00" (Pakistan time).
+        // Leave empty until you know the date. Include the time zone offset.
+        weddingDate: "2026-12-18T19:00:00+05:00",
+        durationHours: 2,
+        venue: "Veranda Noir",
+        address: "",
+        schedule: [
+          { time: "7:00 PM", activity: "Arrival of the Barat" },
+          { time: "7:30 PM", activity: "Dinner" },
+          { time: "9:00 PM", activity: "Rukhsati" },
+        ],
+      };
+
+      // WEBSITE BEHAVIOUR: normally you do not need to edit below this line.
+
+      const cover = document.getElementById("cover"),
+        invitation = document.getElementById("invitation"),
+        openButton = document.getElementById("open");
+      // MUSIC SETTINGS: change 0.2 to any value from 0 (silent) to 1 (full volume).
+      const backgroundMusic = document.getElementById("background-music");
+      const musicToggle = document.getElementById("music-toggle");
+      const musicStatus = document.getElementById("music-status");
+      backgroundMusic.volume = 0.2;
+      let musicStarted = false;
+      function syncMusicButton() {
+        musicToggle.textContent = backgroundMusic.paused
+          ? "Play music"
+          : "Pause music";
+        musicToggle.setAttribute(
+          "aria-label",
+          backgroundMusic.paused
+            ? "Play background music"
+            : "Pause background music",
+        );
+      }
+      async function playBackgroundMusic() {
+        try {
+          await backgroundMusic.play();
+          musicStarted = true;
+          musicStatus.textContent = "Background music playing.";
+          syncMusicButton();
+        } catch (error) {
+          musicStatus.textContent =
+            "Music could not play. Put music.mp3 in the same folder as this HTML file, then try again.";
+          musicToggle.textContent = "Music unavailable — retry";
+        }
+      }
+      musicToggle.addEventListener("click", () => {
+        if (backgroundMusic.paused) playBackgroundMusic();
+        else {
+          backgroundMusic.pause();
+          musicStatus.textContent = "Background music paused.";
+        }
+      });
+      backgroundMusic.addEventListener("play", syncMusicButton);
+      backgroundMusic.addEventListener("pause", syncMusicButton);
+
+      function openInvitation() {
+        // Start only after the guest taps; replay preserves their music choice.
+        if (!musicStarted) playBackgroundMusic();
+        cover.classList.add("open");
+        invitation.inert = false;
+        document.body.style.overflow = "";
+        setTimeout(
+          () =>
+            document.getElementById("replay").focus({ preventScroll: true }),
+          1800,
+        );
+      }
+      openButton.addEventListener("click", openInvitation);
+      document.getElementById("replay").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "instant" });
+        cover.classList.remove("open");
+        invitation.inert = true;
+        document.body.style.overflow = "hidden";
+        openButton.focus({ preventScroll: true });
+      });
+      document.body.style.overflow = "hidden";
+
+      const setText = (id, text) =>
+        (document.getElementById(id).textContent = text);
+      // Names are set as text, so punctuation works without HTML escaping.
+      const names = document.getElementById("names");
+      names.replaceChildren(document.createTextNode(SETTINGS.groom));
+      const amp = document.createElement("span");
+      amp.textContent = "&";
+      names.append(amp, document.createTextNode(SETTINGS.bride));
+      openButton.textContent =
+        SETTINGS.groom.slice(0, 1) + " & " + SETTINGS.bride.slice(0, 1);
+      setText(
+        "date-couple",
+        "THE WEDDING OF " + SETTINGS.groom + " & " + SETTINGS.bride,
+      );
+      document.querySelector(".closing p:nth-of-type(2)").textContent =
+        SETTINGS.groom + " & " + SETTINGS.bride;
+      setText("location-name", SETTINGS.venue);
+      setText("location-address", SETTINGS.address || "");
+      setText("date-location", SETTINGS.venue);
+      if (SETTINGS.venue || SETTINGS.address) {
+        const map = document.getElementById("map-link");
+        map.hidden = false;
+        map.href =
+          "https://www.google.com/maps/search/?api=1&query=" +
+          encodeURIComponent(
+            [SETTINGS.venue, SETTINGS.address].filter(Boolean).join(", "),
+          );
+        document.getElementById("map-note").hidden = true;
+      }
+      for (const item of SETTINGS.schedule) {
+        const li = document.createElement("li"),
+          time = document.createElement("time"),
+          activity = document.createElement("span");
+        time.textContent = item.time;
+        activity.textContent = item.activity;
+        li.append(time, activity);
+        document.getElementById("schedule").append(li);
+      }
+      const wedding = SETTINGS.weddingDate
+        ? new Date(SETTINGS.weddingDate)
+        : null;
+      const validDate = wedding && Number.isFinite(wedding.getTime());
+      if (validDate) {
+        setText(
+          "wedding-date",
+          wedding.toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            timeZone: "Asia/Karachi",
+          }),
+        );
+        document.querySelector(".hero-date").textContent =
+          document.getElementById("wedding-date").textContent;
+        document.getElementById("calendar").disabled = false;
+        setText(
+          "calendar-note",
+          "Download a calendar reminder for your device.",
+        );
+      }
+      function updateCountdown() {
+        if (!validDate) return;
+        let remaining = Math.max(0, Math.floor((wedding - Date.now()) / 1000));
+        const values = [
+          Math.floor(remaining / 86400),
+          Math.floor((remaining % 86400) / 3600),
+          Math.floor((remaining % 3600) / 60),
+          remaining % 60,
+        ];
+        ["days", "hours", "minutes", "seconds"].forEach((id, i) =>
+          setText(id, String(values[i]).padStart(2, "0")),
+        );
+        setText(
+          "count-status",
+          remaining > 0
+            ? "Until we celebrate together."
+            : "The wedding date has arrived.",
+        );
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      function icsEscape(text) {
+        return text
+          .replace(/\\/g, "\\\\")
+          .replace(/\n/g, "\\n")
+          .replace(/,/g, "\\,")
+          .replace(/;/g, "\\;");
+      }
+      function icsDate(date) {
+        return date
+          .toISOString()
+          .replace(/[-:]/g, "")
+          .replace(/\.\d{3}/, "");
+      }
+      document.getElementById("calendar").addEventListener("click", () => {
+        if (!validDate) return;
+        const end = new Date(
+          wedding.getTime() + SETTINGS.durationHours * 3600000,
+        );
+        const calendar =
+          [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Emerald Invitation//Wedding//EN",
+            "BEGIN:VEVENT",
+            "UID:emerald-" + wedding.getTime() + "@invitation.local",
+            "DTSTAMP:" + icsDate(new Date()),
+            "DTSTART:" + icsDate(wedding),
+            "DTEND:" + icsDate(end),
+            "SUMMARY:" +
+              icsEscape(
+                "Wedding of " + SETTINGS.groom + " & " + SETTINGS.bride,
+              ),
+            "LOCATION:" +
+              icsEscape(
+                [SETTINGS.venue, SETTINGS.address].filter(Boolean).join(", "),
+              ),
+            "END:VEVENT",
+            "END:VCALENDAR",
+          ].join("\r\n") + "\r\n";
+        const url = URL.createObjectURL(
+          new Blob([calendar], { type: "text/calendar;charset=utf-8" }),
+        );
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "wedding-invitation.ics";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+      const canvas = document.getElementById("scratch"),
+        ctx = canvas.getContext("2d"),
+        card = document.getElementById("scratch-card");
+      let drawing = false,
+        revealed = false,
+        scratches = 0;
+      function paintScratch() {
+        if (revealed) return;
+        const box = card.getBoundingClientRect(),
+          ratio = window.devicePixelRatio || 1;
+        canvas.width = Math.round(box.width * ratio);
+        canvas.height = Math.round(box.height * ratio);
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        ctx.globalCompositeOperation = "source-over";
+        const gradient = ctx.createLinearGradient(0, 0, box.width, box.height);
+        gradient.addColorStop(0, "#e6d6b4");
+        gradient.addColorStop(0.5, "#c1a375");
+        gradient.addColorStop(1, "#eaddc1");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, box.width, box.height);
+        ctx.strokeStyle = "#947c5144";
+        ctx.strokeRect(14, 14, box.width - 28, box.height - 28);
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#655234";
+        ctx.font = "italic 30px Georgia";
+        ctx.fillText("A little surprise", box.width / 2, box.height / 2 - 8);
+        ctx.font = "10px sans-serif";
+        ctx.fillText("SCRATCH TO REVEAL", box.width / 2, box.height / 2 + 25);
+        scratches = 0;
+      }
+      function revealDate() {
+        revealed = true;
+        canvas.hidden = true;
+        document.getElementById("reveal-date").hidden = true;
+      }
+      function scratch(e) {
+        if (!drawing || revealed) return;
+        const box = canvas.getBoundingClientRect();
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(e.clientX - box.left, e.clientY - box.top, 30, 0, Math.PI * 2);
+        ctx.fill();
+        scratches++;
+        if (scratches % 12 === 0) {
+          const pixels = ctx.getImageData(
+            0,
+            0,
+            canvas.width,
+            canvas.height,
+          ).data;
+          let clear = 0,
+            total = 0;
+          for (let i = 3; i < pixels.length; i += 64) {
+            total++;
+            if (pixels[i] < 128) clear++;
+          }
+          if (clear / total > 0.45) revealDate();
+        }
+      }
+      canvas.addEventListener("pointerdown", (e) => {
+        drawing = true;
+        canvas.setPointerCapture(e.pointerId);
+        scratch(e);
+      });
+      canvas.addEventListener("pointermove", scratch);
+      canvas.addEventListener("pointerup", () => (drawing = false));
+      canvas.addEventListener("pointercancel", () => (drawing = false));
+      document
+        .getElementById("reveal-date")
+        .addEventListener("click", revealDate);
+      new ResizeObserver(paintScratch).observe(card);
+    </script>
+  </body>
+</html>
