@@ -18,23 +18,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#172c25" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="theme-color" content="#300813" />
     <title>Sara Kamal &amp; Muhammad Hamza Saleem — Wedding Invitation</title>
     <!-- APPEARANCE: colours, fonts, spacing and mobile layout -->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=Great+Vibes&display=swap");
       /* COLOURS: green background, gold accents and cream text */
       :root {
-        --green: #172c25;
-        --gold: #c6a46a;
-        --cream: #f2ede1;
+        color-scheme: only light;
+        --green: #300813;
+        --gold: #d4af6e;
+        --cream: #fbf2e5;
       }
       * {
         box-sizing: border-box;
       }
       body {
         margin: 0;
-        background: #10221c;
+        background: #190309;
         color: var(--cream);
         font-family: Inter, sans-serif;
       }
@@ -51,7 +53,7 @@
         position: fixed;
         inset: 0;
         z-index: 10;
-        background: #172c25;
+        background: #300813;
         display: grid;
         place-items: center;
         overflow: hidden;
@@ -76,18 +78,18 @@
         width: 100%;
         height: 100%;
         inset: 0;
-        color: #75816b;
+        color: #c29b75;
         opacity: 0.32;
       }
       .envelope {
         position: absolute;
         inset: 0;
-        box-shadow: inset 0 0 150px #030b08;
+        box-shadow: inset 0 0 150px #100106;
       }
       .flap {
         position: absolute;
         inset: 0 0 34%;
-        background: linear-gradient(145deg, #273d31, #172a22);
+        background: linear-gradient(145deg, #3b0916, #26050d);
         clip-path: polygon(0 0, 100% 0, 100% 46%, 50% 100%, 0 46%);
         filter: drop-shadow(0 8px 5px #000);
         transform-origin: top;
@@ -161,7 +163,7 @@
           italic 20px "Cormorant Garamond",
           Georgia,
           serif;
-        color: #b8baa8;
+        color: #dfc8ba;
       }
       .toolbar {
         position: fixed;
@@ -173,7 +175,7 @@
         border: 1px solid #c6a46a66;
         color: #d8c59f;
         border-radius: 30px;
-        background: #14271fe6;
+        background: #280610ed;
         padding: 12px 18px;
         font:
           10px Inter,
@@ -192,7 +194,7 @@
         text-align: center;
         position: relative;
         padding: 100px 24px;
-        background: radial-gradient(ellipse at center, #2e4837 0, #172c25 65%);
+        background: radial-gradient(ellipse at center, #4b1020 0, #300813 65%);
       }
       .hero:after {
         content: "";
@@ -223,7 +225,7 @@
           italic 24px "Cormorant Garamond",
           Georgia,
           serif;
-        color: #d2d0bc;
+        color: #efddd0;
         margin: 24px 0;
       }
       h1 {
@@ -232,7 +234,7 @@
           Georgia,
           serif;
         margin: 26px 0;
-        color: #f0e8d6;
+        color: #fff3df;
       }
       h1 span {
         display: block;
@@ -269,7 +271,7 @@
         margin-top: 44px;
         font-size: 9px;
         letter-spacing: 3px;
-        color: #b9c1ae;
+        color: #e2cbbd;
       }
       .scroll a {
         color: inherit;
@@ -277,13 +279,13 @@
       }
       .paper {
         background: var(--cream);
-        color: #283b2e;
+        color: #4d2430;
         text-align: center;
         padding: 90px 24px;
         position: relative;
       }
       .paper .eyebrow {
-        color: #866b3e;
+        color: #826032;
       }
       h2 {
         font:
@@ -299,7 +301,7 @@
           serif;
         max-width: 490px;
         margin: 0 auto;
-        color: #596253;
+        color: #72505a;
       }
       .events {
         max-width: 850px;
@@ -325,7 +327,7 @@
       .event p {
         font-size: 12px;
         line-height: 2;
-        color: #626858;
+        color: #72505a;
       }
       .event .time {
         letter-spacing: 2px;
@@ -342,7 +344,7 @@
       .closing {
         padding: 85px 24px;
         text-align: center;
-        background: #172c25;
+        background: #300813;
       }
       .closing p {
         font:
@@ -351,11 +353,11 @@
           serif;
         max-width: 460px;
         margin: 20px auto;
-        color: #ddd8c3;
+        color: #f0ded1;
       }
       .closing small {
         display: block;
-        color: #a7ad98;
+        color: #dcc6bc;
         font-size: 10px;
         line-height: 1.8;
         max-width: 360px;
@@ -374,7 +376,7 @@
       @media (min-width: 700px) {
         .cover {
           inset: 0 calc((100% - 560px) / 2);
-          box-shadow: 0 0 0 100vw #0c1915;
+          box-shadow: 0 0 0 100vw #170208;
         }
         .seal-wrap {
           margin-top: 17vh;
@@ -421,8 +423,8 @@
         display: none !important;
       }
       .details {
-        background: #fcfaf5;
-        color: #303c31;
+        background: #fff9f1;
+        color: #4d2430;
         text-align: center;
         padding: 80px 24px;
       }
@@ -440,8 +442,8 @@
         margin: 36px auto 20px;
         border: 1px solid #ded8ca;
         border-radius: 22px;
-        background: #fffdf8;
-        box-shadow: 0 18px 35px -27px #273b2c88;
+        background: #fffaf3;
+        box-shadow: 0 18px 35px -27px #4d172888;
         overflow: hidden;
         display: grid;
         place-items: center;
@@ -458,7 +460,7 @@
         font-size: 10px;
         letter-spacing: 2px;
         line-height: 2;
-        color: #7d795f;
+        color: #765846;
       }
       .scratch-card canvas {
         position: absolute;
@@ -493,7 +495,7 @@
         background: none;
         text-decoration: underline;
         text-underline-offset: 4px;
-        color: #7f785f;
+        color: #765846;
         font:
           11px Inter,
           sans-serif;
@@ -501,7 +503,7 @@
       }
       .calendar-note {
         font-size: 11px;
-        color: #777b6b;
+        color: #755761;
         line-height: 1.6;
       }
       .countdown {
@@ -534,14 +536,14 @@
         font-size: 8px;
         letter-spacing: 2px;
         margin-top: 8px;
-        color: #7c806e;
+        color: #755761;
       }
       .count-status {
         font:
           italic 18px "Cormorant Garamond",
           Georgia,
           serif;
-        color: #797f6b;
+        color: #755761;
       }
       .evening {
         padding-top: 0;
@@ -575,8 +577,8 @@
         border: 1px solid #ded8ca;
         border-radius: 24px;
         padding: 38px 24px;
-        background: #fffdf9;
-        box-shadow: 0 15px 35px -28px #273b2c88;
+        background: #fffaf3;
+        box-shadow: 0 15px 35px -28px #4d172888;
       }
       .location-art {
         width: 220px;
@@ -595,14 +597,14 @@
       .location-card p {
         font-size: 12px;
         line-height: 1.8;
-        color: #7a7d6c;
+        color: #755761;
       }
       .venue-placeholder {
         font-size: 11px;
-        color: #827b66;
+        color: #765846;
       }
       .details .eyebrow {
-        color: #8a7047;
+        color: #826032;
       }
       @media (max-width: 480px) {
         .details {
@@ -645,10 +647,10 @@
         z-index: 20;
         max-width: calc(100vw - 40px);
         padding: 12px 18px;
-        border: 1px solid #c6a46a;
+        border: 1px solid #d4af6e;
         border-radius: 28px;
-        background: #172c25;
-        color: #f2ede1;
+        background: #300813;
+        color: #fbf2e5;
         font:
           11px Inter,
           sans-serif;
@@ -663,7 +665,7 @@
       .seal-wrap, .cover-header, .cover-footer { z-index: 3; }
       .open .seal { transform: translateY(30px) rotate(-12deg) scale(.82); }
       .open .tap, .open .cover-header, .open .cover-footer { opacity: 0; transition: opacity .35s; }
-      .envelope-letter { position:absolute; inset:15% 8% 7%; background:#f2ede1; border:8px solid #e2d5ba; box-shadow:0 12px 45px #0005; display:grid; place-content:center; text-align:center; color:#80683e; font:italic 35px 'Cormorant Garamond',Georgia,serif; transform:translateY(60%); transition:transform 1.2s .8s cubic-bezier(.2,.7,.2,1); }
+      .envelope-letter { position:absolute; inset:15% 8% 7%; background:#fbf2e5; border:8px solid #e2d5ba; box-shadow:0 12px 45px #0005; display:grid; place-content:center; text-align:center; color:#80683e; font:italic 35px 'Cormorant Garamond',Georgia,serif; transform:translateY(60%); transition:transform 1.2s .8s cubic-bezier(.2,.7,.2,1); }
       .envelope-letter small { display:block; font:10px Inter,sans-serif; letter-spacing:4px; margin-top:18px; }
       .open .envelope-letter { transform:translateY(-12%); }
       .hero-inner > * { opacity:1; }
@@ -682,7 +684,7 @@
       @keyframes date-shimmer { to {transform:translateX(80%)} }
       .schedule li { position:relative; }
       .schedule time { position:relative; }
-      .schedule time:after { content:''; position:absolute; right:-4px; top:8px; width:7px; height:7px; border-radius:50%; background:#aa8b53; box-shadow:0 0 0 4px #fcfaf5; }
+      .schedule time:after { content:''; position:absolute; right:-4px; top:8px; width:7px; height:7px; border-radius:50%; background:#aa8b53; box-shadow:0 0 0 4px #fff9f1; }
       .scroll a { display:inline-block; animation:scroll-hint 2.5s ease-in-out infinite; }
       @keyframes scroll-hint { 50% {transform:translateY(5px)} }
       @media (prefers-reduced-motion:reduce) {
@@ -693,9 +695,9 @@
       /* Gatefold opening: closed panels conceal the invitation completely. */
       .cover { background:transparent; perspective:none; transition:visibility 0s 2.45s; }
       .cover.open { opacity:1; }
-      .cover:before, .cover:after { content:''; position:absolute; top:0; bottom:0; width:50.15%; z-index:0; background:radial-gradient(ellipse at 100% 45%,#304839,#192e25 65%,#12241d); transition:transform 1.65s .45s cubic-bezier(.65,0,.25,1); }
+      .cover:before, .cover:after { content:''; position:absolute; top:0; bottom:0; width:50.15%; z-index:0; background:radial-gradient(ellipse at 100% 45%,#480d1c,#300813 65%,#20040c); transition:transform 1.65s .45s cubic-bezier(.65,0,.25,1); }
       .cover:before { left:0; border-right:1px solid #c6a46a66; box-shadow:inset -15px 0 35px #0002; }
-      .cover:after { right:0; background:radial-gradient(ellipse at 0% 45%,#304839,#192e25 65%,#12241d); border-left:1px solid #c6a46a33; box-shadow:inset 15px 0 35px #0002; }
+      .cover:after { right:0; background:radial-gradient(ellipse at 0% 45%,#480d1c,#300813 65%,#20040c); border-left:1px solid #c6a46a33; box-shadow:inset 15px 0 35px #0002; }
       .cover.open:before { transform:translateX(-102%); }
       .cover.open:after { transform:translateX(102%); }
       .cover .envelope, .cover .flap, .cover .envelope-letter { display:none; }
@@ -719,6 +721,18 @@
       #names span {font:italic 25px/1.3 "Cormorant Garamond",Georgia,serif;margin:6px 0;color:var(--gold);}
       #date-couple {text-transform:none;font-size:11px;letter-spacing:1.6px;}
       @media(max-width:480px){.hero{padding:85px 22px;} .arabic{margin-bottom:28px;} #names{font-size:clamp(40px,10.5vw,52px);} .hero .intro:last-of-type{font-size:21px;line-height:1.4;}}
+
+      .location-card {max-width:400px;border-radius:30px;background:#fffcf7;padding:26px 26px 36px;box-shadow:0 18px 32px -24px #30081355;}
+      .location-art {width:100%;max-width:300px;height:auto;margin:0 auto 20px;}
+      .location-card > .eyebrow {display:inline-block;border:1px solid #b9986255;border-radius:30px;padding:8px 17px;letter-spacing:3px;color:#916e43;}
+      .location-card h3 {font-size:34px;margin:22px 0 27px;}
+      #map-link {display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:235px;max-width:100%;padding:16px 23px;border-color:#b99862;letter-spacing:3px;color:#7c552b;transition:background .25s,color .25s,transform .25s;}
+      #map-link:hover {background:#300813;color:#f1d7a0;transform:translateY(-2px);}
+      #location-address:empty {display:none;}
+      #date-couple {font-size:9px;letter-spacing:3px;line-height:1.8;text-transform:uppercase;}
+      .scratch-card .date-weekday {font:italic 20px/1.4 "Cormorant Garamond",Georgia,serif;letter-spacing:0;margin:19px 0 4px;}
+      .scratch-card h3 {margin:9px 0 17px;font-size:clamp(30px,5.5vw,44px);}
+      #date-location {font-size:9px;letter-spacing:3px;line-height:2;max-width:340px;margin:0 auto;}
     </style>
   </head>
   <body>
@@ -821,23 +835,37 @@
           <h1 id="names">Sara Kamal<span>with</span>Muhammad Hamza Saleem</h1>
           <div class="divider">✧</div>
           <div class="hero-date">A DAY TO REMEMBER</div>
-          <p class="intro">Join us as our children begin their forever.</p>
+          <p class="intro">Join us as they begin their life together.</p>
           <div class="scroll">
-            <a href="#save-date">DISCOVER OUR DATE &nbsp; ↓</a>
+            <a href="#save-date">REVEAL THE DATE &nbsp; ↓</a>
           </div>
         </div>
       </section>
+      <!-- EVENT CARDS: edit the Barat details inside this section -->
+      <section class="paper" id="celebration">
+        <div class="eyebrow">With full hearts</div>
+        <h2>You're invited.</h2>
+        <p class="note">
+          We would be delighted to have you join us in celebrating our daughter’s wedding.
+        </p>
+        <div class="events">
+          <article class="event">
+            <h3>Barat</h3>
+          </article>
+        </div>
+      </section>
+
       <!-- SCRATCH DATE CARD AND COUNTDOWN: details come from SETTINGS -->
       <section class="details" id="save-date">
         <div class="detail-wrap">
           <div class="eyebrow">The beginning of forever</div>
           <h2>Save the Date</h2>
-          <p class="eyebrow" style="font-size: 8px">
+          <p class="eyebrow" id="scratch-instruction" style="font-size: 8px">
             Scratch to reveal the date
           </p>
           <div class="scratch-card" id="scratch-card">
             <div>
-              <p id="date-couple">The wedding of Hamza and Sara</p>
+              <p id="date-couple">THE BARAT OF HAMZA &amp; SARA</p><p id="date-weekday" class="date-weekday"></p>
               <h3 id="wedding-date">Date to be added</h3>
               <p id="date-location">Venue to be added</p>
             </div>
@@ -845,10 +873,10 @@
           </div>
           <button class="reveal-button" id="reveal-date">
             Or tap here to reveal the date</button
-          ><button class="outline-button" id="calendar" disabled>
+          ><button class="outline-button" id="calendar" disabled hidden>
             Add to calendar
           </button>
-          <p class="calendar-note" id="calendar-note">
+          <p class="calendar-note" id="calendar-note" hidden>
             Calendar download becomes available when you set the wedding date.
           </p>
           <div class="countdown" id="countdown" hidden>
@@ -873,43 +901,29 @@
           </div>
         </div>
       </section>
-      <!-- EVENT CARDS: edit the Barat details inside this section -->
-      <section class="paper" id="celebration">
-        <div class="eyebrow">With full hearts</div>
-        <h2>You're invited.</h2>
-        <p class="note">
-          We would be delighted to have you with us as we celebrate our wedding,
-          surrounded by the people we love.
-        </p>
-        <div class="events">
-          <article class="event">
-            <h3>Barat</h3>
-            <p class="time" id="event-date-time">18 DECEMBER 2026 · 7:00 PM</p>
-            <p class="venue" id="event-venue">Veranda Noir</p>
-          </article>
-        </div>
-      </section>
-
       <!-- EVENING SCHEDULE AND VENUE: details come from SETTINGS -->
       <section class="details evening" id="evening">
         <div class="detail-wrap">
           <div class="eyebrow">A celebration to cherish</div>
           <h2>The Evening</h2>
-          <p class="calendar-note" id="evening-date">18 December 2026</p>
+          <p class="calendar-note" id="evening-date" hidden></p>
           <ol class="schedule" id="schedule"></ol>
           <div class="eyebrow">We look forward to seeing you</div>
           <h2>Location</h2>
           <div class="location-card">
-            <svg class="location-art" viewBox="0 0 240 140" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <ellipse cx="120" cy="120" rx="32" ry="5" opacity=".35" />
-              <path d="M120 109C110 96 87 75 87 52a33 33 0 0 1 66 0c0 23-23 44-33 57Z" />
-              <circle cx="120" cy="52" r="12" />
-              <path d="M81 112C55 94 49 65 59 38M64 92Q39 91 41 72Q60 72 64 92ZM57 72Q36 63 44 48Q61 54 57 72ZM57 53Q47 36 61 24Q72 40 57 53ZM76 106Q74 85 89 80Q96 98 76 106Z" opacity=".7" />
-              <path d="M159 112C185 94 191 65 181 38M176 92Q201 91 199 72Q180 72 176 92ZM183 72Q204 63 196 48Q179 54 183 72ZM183 53Q193 36 179 24Q168 40 183 53ZM164 106Q166 85 151 80Q144 98 164 106Z" opacity=".7" />
-              <path d="M120 3v7M116.5 6.5h7M76 27v5M73.5 29.5h5M164 27v5M161.5 29.5h5" opacity=".65" />
-            </svg>
+            <svg class="location-art" viewBox="0 0 320 170" fill="none" stroke="#b99862" stroke-width="1.2" aria-hidden="true">
+<defs><linearGradient id="venue-wash" x2="1" y2="1"><stop stop-color="#e4d5bf" stop-opacity=".5"/><stop offset="1" stop-color="#b87380" stop-opacity=".14"/></linearGradient></defs>
+<ellipse cx="160" cy="94" rx="133" ry="65" fill="url(#venue-wash)" stroke="none"/>
+<path d="M119 161 145 123h30l26 38" fill="#682337" fill-opacity=".35" stroke="none"/>
+<path d="M49 130V66h48v64M223 130V66h48v64M97 130V54h126v76M132 130V96a28 28 0 0 1 56 0v34" fill="#fff5df" fill-opacity=".65"/>
+<path d="M42 66h62L73 42 42 66ZM216 66h62l-31-24-31 24ZM119 54Q160-4 201 54ZM160 20V8M73 42V29M247 42V29M90 54h140M40 131h240"/>
+<g fill="#b99862" fill-opacity=".2"><path d="M59 83h11v22H59zM77 83h11v22H77zM232 83h11v22h-11zM250 83h11v22h-11zM109 71h12v20h-12zM199 71h12v20h-12z"/></g>
+<path d="M146 130V99a14 14 0 0 1 28 0v31M138 138h44M132 145h56"/>
+<g fill="#a49b78" fill-opacity=".65" stroke="#a49b78"><ellipse cx="38" cy="114" rx="10" ry="16"/><ellipse cx="282" cy="114" rx="10" ry="16"/><path d="M38 116v27M282 116v27"/></g>
+<path d="M27 137h22l-4 16H31ZM271 137h22l-4 16h-14Z" fill="#b99862" fill-opacity=".35"/>
+</svg>
             <div class="eyebrow" style="font-size: 8px">
-              Wedding celebration
+              Barat Reception
             </div>
             <h3 id="location-name">Veranda Noir</h3>
             <p id="location-address">Add your venue address in the settings.</p>
@@ -919,7 +933,7 @@
               target="_blank"
               rel="noopener noreferrer"
               hidden
-              >View location ↗</a
+              ><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M21 3 3 10l7 3 3 8 8-18ZM12 12l-5-2 10-4-5 6Z"/></svg> View Location</a
             >
             <p id="map-note" class="venue-placeholder">
               The map button will appear when you add the address.
@@ -1031,12 +1045,11 @@
       openButton.textContent = "H & S";
       setText(
         "date-couple",
-        "The wedding of Hamza and Sara",
+        "THE BARAT OF HAMZA & SARA",
       );
       document.querySelector(".closing p:nth-of-type(2)").textContent =
         "Hamza & Sara";
       setText("location-name", SETTINGS.venue);
-      setText("event-venue", SETTINGS.venue);
       setText("location-address", SETTINGS.address || "");
       setText("date-location", SETTINGS.venue);
       if (SETTINGS.venue || SETTINGS.address) {
@@ -1074,8 +1087,8 @@
         );
         document.querySelector(".hero-date").textContent = "A DAY TO REMEMBER";
         setText("evening-date", document.getElementById("wedding-date").textContent);
-        setText("event-date-time", wedding.toLocaleString("en-GB", {day:"numeric",month:"long",year:"numeric",hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Karachi"}).toUpperCase());
-        document.getElementById("calendar").disabled = false;
+        setText("date-weekday", wedding.toLocaleDateString("en-GB", {weekday:"long",timeZone:"Asia/Karachi"}));
+        setText("date-location", wedding.toLocaleTimeString("en-US", {hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Karachi"}) + " · " + SETTINGS.venue.toUpperCase());
         setText(
           "calendar-note",
           "Download a calendar reminder for your device.",
@@ -1115,7 +1128,7 @@
           .replace(/\.\d{3}/, "");
       }
       document.getElementById("calendar").addEventListener("click", () => {
-        if (!validDate) return;
+        if (!validDate || !revealed) return;
         const end = new Date(
           wedding.getTime() + SETTINGS.durationHours * 3600000,
         );
@@ -1123,7 +1136,7 @@
           [
             "BEGIN:VCALENDAR",
             "VERSION:2.0",
-            "PRODID:-//Emerald Invitation//Wedding//EN",
+            "PRODID:-//Maroon Gold Invitation//Wedding//EN",
             "BEGIN:VEVENT",
             "UID:emerald-" + wedding.getTime() + "@invitation.local",
             "DTSTAMP:" + icsDate(new Date()),
@@ -1182,10 +1195,17 @@
       function revealDate() {
         if (revealed) return;
         revealed = true;
-        if (validDate) document.querySelector(".hero-date").textContent = document.getElementById("wedding-date").textContent;
         card.classList.add("revealed");
         setTimeout(() => {
           canvas.hidden = true;
+          document.getElementById("scratch-instruction").hidden = true;
+          if (validDate) {
+            document.querySelector(".hero-date").textContent = document.getElementById("wedding-date").textContent;
+            document.getElementById("evening-date").hidden = false;
+            document.getElementById("calendar").hidden = false;
+            document.getElementById("calendar").disabled = false;
+            document.getElementById("calendar-note").hidden = false;
+          }
           const countdown = document.getElementById("countdown");
           countdown.hidden = false;
           updateCountdown();
